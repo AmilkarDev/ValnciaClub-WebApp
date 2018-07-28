@@ -1,0 +1,64 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<VTechClubApp.Models.ToolTorepair>
+@{
+    ViewBag.Title = "Tools";
+}
+
+<h2 class="well">Tools</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr class="info">
+        <th>
+            @Html.DisplayNameFor(model => model.First().RepairCaseIdd)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.First().Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Issue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Result)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepairCaseIdd)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Issue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Result)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ToolToRepairId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ToolToRepairId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ToolToRepairId })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount Tools
+</div>

@@ -1,0 +1,97 @@
+﻿@model VTechClubApp.Models.RepairCase
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="well">Repair Case Details</h2>
+
+<div>
+    @*<h4>RepairCase</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TechNote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechNote)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceptionDate)
+        </dt>
+       
+        <dd>
+            @Html.DisplayFor(model => model.ReceptionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickUpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LatestPickUpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LatestPickUpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Technician.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Technician.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <button class="btn btn-info" onclick="location.href='@Url.Action("Index", "RepairCases")'">
+        <i class="glyphicon glyphicon-backward"></i>
+        Back To List
+    </button>
+    <button class="btn btn-info" onclick="location.href='@Url.Action("Edit", "RepairCases", new { id = Model.RepairCaseId })'">
+        <i class="glyphicon glyphicon-edit"></i>
+      Edit
+    </button>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RepairCaseId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

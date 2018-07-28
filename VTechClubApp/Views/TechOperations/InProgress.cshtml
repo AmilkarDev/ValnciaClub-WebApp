@@ -1,0 +1,82 @@
+﻿@model IEnumerable<VTechClubApp.Models.RepairCase>
+
+@{
+    ViewBag.Title = "InProgress";
+    Layout = "~/Views/Shared/TechLayout.cshtml";
+}
+
+<h2 class="well">InProgress</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr class="info">
+       
+       
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceptionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LatestPickUpDate)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Situation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceptionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LatestPickUpDate)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Situation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RepairCaseId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RepairCaseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RepairCaseId })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    <button class="btn btn-outline-danger" onclick="location.href='@Url.Action("Index","TechOperations")'">
+        <i class="glyphicon glyphicon-backward"></i>
+        Back To List
+    </button>
+</div>

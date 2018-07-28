@@ -1,0 +1,78 @@
+﻿@model VTechClubApp.Models.ToolTorepair
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="well">Details</h2>
+
+<div>
+    <h4>Tool's details </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Technician.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Technician.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Issue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Issue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Result)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Result)
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ToolToRepairId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+<div>
+   
+    <button class="btn btn-info" onclick="location.href='@Url.Action("Index", "ToolTorepair")'">
+        <i class="glyphicon glyphicon-backward"></i>
+        Back To List
+    </button> |
+    <button class="btn btn-info" onclick="location.href='@Url.Action("Edit", "ToolTorepair", new { id = Model.ToolToRepairId })'">
+        <i class="glyphicon glyphicon-edit"></i>
+        Edit
+    </button>
+
+</div>

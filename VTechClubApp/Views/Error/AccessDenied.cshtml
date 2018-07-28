@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Access Denied";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2>Access Denied</h2>
+
+@*<p>
+    <strong> Error </strong>
+    Seems like you are not in the rignt place !!! 
+    @Html.ActionLink("Go Back","Index","Reception")
+</p>*@
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <strong>Error!</strong> Seems like you are not in the rignt place !!! 
+</div>
+
+
+
+
+<button class="btn btn-outline-info" onclick="location.href='@Url.Action("index","reception")'">
+    <i class="glyphicon glyphicon-home"></i>
+    Home
+</button>

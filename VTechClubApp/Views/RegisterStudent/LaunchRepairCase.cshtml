@@ -1,0 +1,215 @@
+﻿
+<head>
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/
+                jquery-ui.css" />*@
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <title>hello</title>
+</head>
+@model VTechClubApp.Models.RepairCase
+
+@{
+    ViewBag.Title = "LaunchRepairCase";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2 class="well">Launch New Repair Case</h2>
+
+
+
+
+
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @*<h4>RepairCase</h4>*@
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group form-group-lg">
+                    @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                  
+                        @Html.TextAreaFor(model => model.Note, new { @class = "form-control", @rows = "5" })
+                        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group" id="datepicker">
+                    @Html.LabelFor(model => model.ReceptionDate, htmlAttributes: new { @class = "control-label col-md-2"})
+                    <div class="col-md-10" id="ReceptionDate">
+                        @Html.EditorFor(model => model.ReceptionDate, new { id = "datepicker" } )
+                        @Html.ValidationMessageFor(model => model.ReceptionDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ReceptionDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" >
+                        @Html.TextBoxFor(model => model.ReceptionDate, new { id = "datepicker" ,@class ="form-control"})
+                        @Html.ValidationMessageFor(model => model.ReceptionDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                <p>
+                    @using (Html.BeginForm("LaunchRepairCase", "RegisterStudent", FormMethod.Get))
+                    {
+                        <b>
+                            Accept Our rules : To receive repair service, the client must agree to the terms below. Please initial the box next to each item.
+                            <br />
+                        </b>
+                        @*@Html.RadioButton("accept","ACCEPT1", false) <text> I agree</text><br/>
+                            @Html.RadioButton("accept", "ACCEPT2", false) <text> I do not agree</text><br />*@
+                        @Html.RadioButtonFor(m => m.Agreement, "Agree")<text> I agree</text><br />
+                        @Html.RadioButtonFor(m => m.Agreement, "NotAgree")<text> I do not agree</text><br />
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Waiver of Liability and Warranty</div>
+                            @*<h3 class="panel-title">To receive repair service, the client must agree to the terms below. Please initial the box next to each item.</h3>*@
+                            <div class="panel-body">
+                                <div class="alert alert-info">
+                                    In the event that I am found not to be the true expressed
+                                    owner of this computer system, I assume all liability for any claim made
+                                    as the result of the technical support rendered by Valencia College
+                                    Technology Club on this computer system, including those claims which assert negligence
+                                    on the part of Valencia College Technology club.
+                                </div>
+                                <div class="alert alert-info">
+                                    I understand that support rendered by Valencia College Technology Club may
+                                    void manufacturer warranties for this computer system. Valencia College Technology
+                                    Club does not assume any liability or warranty in the event that the manufacturer warranties are voided.
+                                    I also understand that the Technology Club will have access to all content on the computer.
+                                </div>
+                                <div class="alert alert-info">
+                                    I understand that Valencia College Technology Club offers no verbal or written warranty, either expressed or implied, regarding the success of this technical support.
+                                </div>
+                                <div class="alert alert-info">
+                                    In consideration for receiving assistance from Valencia College Technology Club, I hereby RELEASE, and WAIVE the Technology Club, Valencia College, the District Board of Trustees, their officers, agents or employees from any and all liability and claims arising out of or related to any loss or damage to any property or data belonging to me, whether caused by the negligence for the work and assistance being provided.
+                                </div>
+                                <div class="alert alert-info">
+                                    I understand that any property left here for more than 30 days (after we contact you) is considered abandoned property. Any abandoned property will be acquired by the Valencia College Technology Club.
+                                </div>
+                            </div>
+                        </div>
+                      
+                    }
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-3">
+                             
+                                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-3">
+                                <input type="submit" value="Create" class="btn btn-info" />
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+        }
+        <div class="container">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                     Modal content
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Cancel repair Case registration</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to cancel this repair Case registration?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Cancel","RegisterStudent")'">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryui")
+@Styles.Render("~/Content/cssjqryUi")
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+@*<script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")" type="text/javascript"></script>*@
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    $('#datepicker').datepicker({
+    //        dateFormat: "dd/mm/yy",
+    //        changeMonth: true,
+    //        changeYear: false,
+    //        yearRange: "-60:+0",
+    //        beforeShowDay: $.datepicker.noWeekends
+    //    });
+
+    //});
+
+   
+    $(function () {
+        var unavailableDay1 = 1; // disable tuesdays
+        var unavailableDay2 = 2;
+        var unavailableDay3 = 0;
+        var unavailableDay4 = 4;
+        var unavailableDay5 = 5;
+        var unavailableDay6 = 6;
+        var dateToday;
+        function disableDays(date) {
+            dateToday = date.getDay();
+            var day = date.getDay();
+            return [((day != unavailableDay1) && (day != unavailableDay2) && (day != unavailableDay3) && (day != unavailableDay4)&&(day != unavailableDay5)&&(day != unavailableDay6)), ""];
+        }
+
+        $('#datepicker').datepicker({
+            //dateFormat: 'mm-dd-yy',
+            dateFormat: 'DD, d MM, yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-0:+1",
+                    beforeShowDay: disableDays,
+                    minDate: 0
+        });
+     
+    });
+</script>
+  }
+@*<script type="text/javascript">
+  
+        $(document).ready(function () {
+        $('#datepicker').datepicker({ beforeShowDay: $.datepicker.noWeekends } );
+      
+    });
+</script>*@
+
+
+
+@*<div class="container">*@
+    @*<h2>Modal Example</h2>*@
+    <!-- Trigger the modal with a button -->
+    @*<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Cancel</button>*@
+    <!-- Modal -->
+   
+
+@*</div>*@
+
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

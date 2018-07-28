@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/layout.cshtml";
+
+    //The AjaxOptions determine the behavior of the AJAX call
+    //(e.g. what method on the server is called, what html element to update upon completion, etc.)
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading-area",
+        LoadingElementDuration = 1000,
+        Url = Url.Action("Submit"),
+        OnBegin = "HideForm",
+        OnFailure = "ShowFailure",
+        UpdateTargetId = "message-area"
+    };
+}
+
+
+<br />
+<!-- The loading-area will be where we display a message during the AJAX call.
+    This way, the user knows something is happening in the background.-->
+<div id="loading-area" class="load" style="display:none;">
+    <div class='alert alert-info'><strong>Sending...</strong></div>
+</div>
+<!-- The message-area will be where we display a message after the AJAX call
+    about whether or not the contact form was successfully sent-->
+<div id="message-area"></div>
+
+<div id="form-area">
+    @using (Ajax.BeginForm(ajaxOptions))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.subject)
+        @Html.TextBoxFor(model => model.subject, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.subject)
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+        <input type="submit" value="Send" />
+    }
+</div>
+
+<!-- These methods are invoked at different stages of the AJAX call-->
+<script type="text/javascript">
+    function HideForm() {
+        //When the form is submitted, we hide the form
+        $("#form-area").hide();
+    }
+    function ShowFailure() {
+        //In the case that the AJAX call fails to communicate with the server
+        //(e.g. the user's internet connection cuts out), we should display a message to that effect
+        $('#message-area').html("<div class='alert alert-danger'><strong>Error!</strong>The server could not be contacted and your message has not been sent. Please check your internet connection and try again later.</div>");
+    }
+</script>

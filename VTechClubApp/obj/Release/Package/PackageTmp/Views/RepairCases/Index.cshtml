@@ -1,0 +1,128 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<VTechClubApp.Models.RepairCase>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="well">Repair Cases</h2>
+@using (Html.BeginForm("Index", "RepairCases", FormMethod.Get, new { @class = "Search-form" }))
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 ">
+            @*col-md-10*@
+            <div>
+                <text>Search Repair Cases : </text><input type="text" name="param" />
+                </div>
+                <div>
+                @Html.RadioButton("SearchType", "0")
+                @Html.Label("ID  ")
+                @Html.RadioButton("SearchType", "1")
+                @Html.Label("Reception Date   ")
+                @Html.RadioButton("SearchType", "2")
+                @Html.Label("Completion Date   ")
+                @Html.RadioButton("SearchType", "3")
+                @Html.Label("PickUp Date   ")
+                @Html.RadioButton("SearchType", "4")
+                @Html.Label("Latest PickUp Date   ")
+                @Html.RadioButton("SearchType", "5")
+                @Html.Label("Technician Id   ")
+                @Html.RadioButton("SearchType", "6")
+                @Html.Label("Customer Id     ")
+                <input type="submit" value="  Search  " id="btnSubmit" />
+            </div>
+        </div>
+    </div>
+}
+<p>
+    @*@Html.ActionLink("Create New", "Create")  |*@
+    @Html.ActionLink("Registered","Registered")  |
+    @Html.ActionLink("In Progress","InProgress")  |
+    @Html.ActionLink("Finished", "Finished") |
+    @Html.ActionLink("Today","Index","Today")
+</p>
+<table class="table table-hover">
+    <tr class="info">
+        <th>
+            @Html.DisplayNameFor(model => model.First().RepairCaseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Situation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ReceptionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CompletionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().PickUpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().LatestPickUpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TechnicianIdd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CustomerIdd)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.RepairCaseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Situation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceptionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LatestPickUpDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechnicianIdd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerIdd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RepairCaseId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RepairCaseId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RepairCaseId }) |
+                @Html.ActionLink("Tools", "Tools", new { id = item.RepairCaseId }) |
+                @Html.ActionLink("CC", "ContactCustomer", new { id = item.RepairCaseId })
+            </td>
+        </tr>
+    }
+
+   
+</table>
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    <div class="alert alert-info">
+        Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount Repair Cases
+    </div>
+</div>
+<div>
+    @Html.ActionLink("All", "All")
+</div>

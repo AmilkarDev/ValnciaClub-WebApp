@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "RegistrationDisabled";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2>Registration Disabled</h2>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <strong>Thanks!</strong> Registration is disabled for now since all slots are busy , please check our system later
+</div>
+
+
+
+
+<button class="btn btn-outline-info" onclick="location.href='@Url.Action("index","reception")'">
+    <i class="glyphicon glyphicon-home"></i>
+    Home
+</button>

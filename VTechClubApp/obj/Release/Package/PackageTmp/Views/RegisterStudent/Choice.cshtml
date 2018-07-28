@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Final Customer Invoice";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8"/>
+    <style>
+        .col-center {
+             /*width: 80%;*/
+        margin: 0 auto;
+        padding: 20px;
+        background: #f0e68c;
+        }
+        
+    </style>
+    <title>Customer Invoice</title>
+</head>
+<body>
+    <div class="row">
+        <h1  class="well">Customer Invoice</h1>
+        <div class="col-center">
+        
+            First Name : @TempData["Name"] <br />
+            Last Name : @TempData["Pname"]<br />
+            Phone Number : @TempData["Phone"]<br />
+            Email : @TempData["email"] <br />
+            Registration Date : @TempData["registerDate"] <br />
+            Reception Date : @TempData["receptiondate"] <br />
+
+
+
+            ----------------------------------------Tools To repair -------------------------------------------
+            @Html.Partial("InvoiceTools")
+
+        </div>
+    </div>
+</body>
+</html>

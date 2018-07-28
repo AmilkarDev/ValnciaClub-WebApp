@@ -1,0 +1,90 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<VTechClubApp.Models.RepairCase>
+
+@{
+    ViewBag.Title = "Finished";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="well">Finished repair Cases</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr class="info">
+        @*<th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Technician.TechnicianName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.First().Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ReceptionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CompletionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().PickUpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().LatestPickUpDate)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.First().Situation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Technician.TechnicianName)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceptionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LatestPickUpDate)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Situation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RepairCaseId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RepairCaseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RepairCaseId })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Finished", new { page }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount  finished Repair Cases
+</div>
+<button class="btn btn-info hidden-print" onclick="location.href='@Url.Action("Index","RepairCases")'">
+    <span class="glyphicon glyphicon-backward" aria-hidden="false"></span>  Back to list
+</button>
+@*<div>
+    @Html.ActionLink("Back to list ", "Index")
+</div>*@

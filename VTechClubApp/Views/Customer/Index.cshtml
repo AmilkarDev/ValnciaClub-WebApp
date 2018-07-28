@@ -1,0 +1,85 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<VTechClubApp.Models.Customer>
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="well">Customers</h2>
+
+
+@*<p>
+    <a href=@Url.Action("Create","Customer") class="btn btn-info ">
+        <i class="glyphicon glyphicon-plus-sign"></i>
+        Create New
+    </a>
+</p>*@
+
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <table class="table">
+        <tr class="info">
+            <th>
+                @Html.DisplayNameFor(model => model.First().CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CustomerPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CustomerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().NumberOfRequests)
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfRequests)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CustomerId }) |*@
+                    @*@Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId }) |*@
+                    <a href=@Url.Action("Operations", "Customer", new { id = item.CustomerId }) class="btn btn-primary ">
+                        <i class="glyphicon glyphicon-cog"></i>
+                    Operations
+                    </a>
+                    @*@Html.ActionLink("Operations", "Operations", new { id = item.CustomerId })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount Customers
+    </div>

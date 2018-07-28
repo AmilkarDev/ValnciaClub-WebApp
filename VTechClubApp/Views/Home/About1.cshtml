@@ -1,0 +1,25 @@
+﻿@model IEnumerable<VTechClubApp.Models.ManufacturerGroup >
+
+<table>
+        <tr>
+            <th>
+                Manufacturer
+            </th>
+            <th>
+               Tools Count
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer   )
+                </td>
+                <td>
+                    @item.ManufacturerCount
+                </td>
+            </tr>
+        }
+    </table>
+

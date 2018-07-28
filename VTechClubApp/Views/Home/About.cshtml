@@ -1,0 +1,99 @@
+﻿@using VTechClubApp;
+@model dynamic
+@{
+    ViewBag.Title = "Vtech Club Repair Branch Statistics";
+}
+<h2 class="well">Valencia technology Club Repair Branch Statistics</h2>
+<p>Welcome to our statistics page , in which we present our efforts in form of numbers !!!</p>
+
+<div class="container">
+    <div class="row">
+<div class="col-md-3">
+
+    <h2 class="well well-sm"> Reception Date</h2>
+    <table class="table">
+        <tr class="info">
+            <th>
+                Reception Date
+            </th>
+            <th>
+                RepairCases
+            </th>
+        </tr>
+
+        @foreach (var receptiondat in Model.data01)
+        {
+            <tr>
+                <td>
+                    @receptiondat.ReceptionDate.ToString("MM/dd/yyyy")
+            </td>
+            <td>
+                @receptiondat.RepairCaseCount
+            </td>
+        </tr>
+        }
+    </table>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="col-md-3">
+
+    <h2 class="well well-sm"> Manufacturer </h2>
+    <table class="table">
+        <tr class="info">
+            <th>
+                Manufacturer
+            </th>
+            <th>
+                Tools Count
+            </th>
+        </tr>
+
+        @foreach (var manufact in Model.data02)
+        {
+            <tr>
+                <td>
+                    @manufact.Manufacturer
+                </td>
+                <td>
+                    @manufact.ManufacturerCount
+                </td>
+            </tr>
+        }
+    </table>
+ </div>
+<div class="col-md-3">
+    <h2 class="well well-sm"> Issues  </h2>
+    <table class="table">
+        <tr class="info">
+            <th>
+                Issues
+            </th>
+            <th>
+                Issues Count
+            </th>
+        </tr>
+
+        @foreach (var issue in Model.data03)
+        {
+            <tr>
+                <td>
+                    @issue.IssueName
+                </td>
+                <td>
+                    @issue.Count
+                </td>
+            </tr>
+        }
+    </table>
+    </div>
+</div>
+</div>

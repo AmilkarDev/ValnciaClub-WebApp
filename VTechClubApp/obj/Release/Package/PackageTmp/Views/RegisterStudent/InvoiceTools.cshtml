@@ -1,0 +1,56 @@
+﻿@model IEnumerable<VTechClubApp.Models.ToolTorepair>
+
+
+<table class="table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairCase.Note)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Issue)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairCase.Note)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Issue)
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="hidden-print ">
+    <a href=@Url.Action("print","RegisterStudent") target="_blank" class="btn btn-info ">
+        <i class="glyphicon glyphicon-print"></i>
+        Print
+    </a>
+    <button class="btn btn-info  hidden-print" onclick="location.href='@Url.Action("Download","RegisterStudent")'">
+        <i class="glyphicon glyphicon-download"></i>
+        Download
+    </button>
+    <button class="btn btn-info hidden-print" onclick="location.href='@Url.Action("Index","Redirect")'">
+        <i class="glyphicon glyphicon-home"></i>
+        Home
+    </button>
+</div>

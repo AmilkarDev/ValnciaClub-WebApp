@@ -1,0 +1,80 @@
+﻿@model IEnumerable<VTechClubApp.Models.Technician>
+@*<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="well">Technicians</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr class="info">
+        <th>
+            @Html.DisplayNameFor(model => model.TechnicianId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName   )
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.TechnicianEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfOperations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TechnicianId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.TechnicianEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfOperations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new {id = item.TechnicianId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.TechnicianId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.TechnicianId}) |*@
+            @Html.ActionLink("Operations", "Operations", new {id = item.TechnicianId})
+        </td>
+    </tr>
+}
+
+</table>
+@*@Html.ActionLink("Print", "Print", "Technician")*@
+
+@*<button class="btn btn-info hidden-print" onclick="location.href='@Url.Action("Print","Technician")'">
+    <span class="glyphicon glyphicon-print" aria-hidden="false"></span>  Print
+</button>*@

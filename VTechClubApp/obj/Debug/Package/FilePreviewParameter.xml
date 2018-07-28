@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Vtech-ComputerRepairBranch" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\Projects-2013\\VTechClubApp\\VTechClubApp\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\Projects-2013\\VTechClubApp\\VTechClubApp\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="VTechContext-Web.config Connection String" description="" value="Server=tcp:vtechclubserver.database.windows.net,1433;Initial Catalog=VTechClubDB;Persist Security Info=False;User ID=MalekFerhi;Password=GoHell123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\Projects-2013\\VTechClubApp\\VTechClubApp\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='VTechContext']/@connectionString" />
+  </parameter>
+</parameters>

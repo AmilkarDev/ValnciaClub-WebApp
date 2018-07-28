@@ -1,0 +1,116 @@
+﻿@model VTechClubApp.Models.RepairCase
+
+<div>
+    <h4 class="well">Repair Case's Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Technician.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Technician.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TechNote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechNote)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceptionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceptionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickUpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LatestPickUpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LatestPickUpDate)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Agreement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agreement)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Situation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Situation)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TechNote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechNote)
+        </dd>*@
+
+    </dl>
+</div>
+<div>
+    <button class="btn btn-outline-danger" onclick="location.href='@Url.Action("Index","TechOperations")'">
+        <i class="glyphicon glyphicon-backward"></i>
+        Back To List
+    </button>
+    |@Html.ActionLink("Edit", "Edit", new { id = Model.RepairCaseId })
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>

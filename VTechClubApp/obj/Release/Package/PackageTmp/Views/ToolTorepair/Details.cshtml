@@ -1,0 +1,66 @@
+﻿@model VTechClubApp.Models.ToolTorepair
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ToolTorepair</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairCase.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairCase.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Technician.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Technician.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Issue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Issue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Result)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Result)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ToolToRepairId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

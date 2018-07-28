@@ -1,0 +1,97 @@
+﻿@model IEnumerable<VTechClubApp.Models.RepairCase>
+
+@{
+    ViewBag.Title = "MyRepairCases";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2 class="well">My Repair Cases</h2>
+
+<p>
+    <a href=@Url.Action("RegisteredRC","Reception")     class="btn btn-primary ">
+        <i class="glyphicon glyphicon-cog"></i>
+        Registered
+    </a>
+    @*@Html.ActionLink("Registered", "RegisteredRC")*@ |
+    <a href=@Url.Action("InProgressRC", "Reception") class="btn btn-primary ">
+        <i class="glyphicon glyphicon-cog"></i>
+        In Progress
+    </a>
+    @*@Html.ActionLink("In Progress", "InProgressRC")*@ |
+    <a href=@Url.Action("FinishedRC", "Reception") class="btn btn-primary ">
+        <i class="glyphicon glyphicon-cog"></i>
+        Finished
+    </a>
+    @*@Html.ActionLink("Finished", "FinishedRC")*@
+</p>
+<table class="table">
+    
+    <tr class="info">
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceptionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LatestPickUpDate)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Situation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceptionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LatestPickUpDate)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.Situation)
+        </td>
+        <td>
+            @*@Html.ActionLink("Tools", "Tools", new { id = item.RepairCaseId })
+
+
+            <a href=@Url.Action("Operations", "Customer", new { id = item.CustomerId }) class="btn btn-primary ">
+                <i class="glyphicon glyphicon-cog"></i>
+                Operations
+            </a>*@
+
+            <a href=@Url.Action("Tools", "Reception", new { id = item.RepairCaseId }) class="btn btn-primary ">
+                <i class="glyphicon glyphicon-cog"></i>
+                Tools
+            </a>
+
+
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.RepairCaseId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RepairCaseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RepairCaseId })*@
+        </td>
+    </tr>
+}
+
+</table>

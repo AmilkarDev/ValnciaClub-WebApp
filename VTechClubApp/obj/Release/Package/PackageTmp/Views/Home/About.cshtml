@@ -1,0 +1,96 @@
+﻿@using VTechClubApp;
+@model dynamic
+@{
+    ViewBag.Title = "Vtech Club Repair Branch Statistics";
+}
+<div class="container">
+    <div class="row">
+<div class="col-md-3">
+
+    <h2> Reception Statistics</h2>
+    <table class="table-bordered table-striped">
+        <tr>
+            <th>
+                Reception Date
+            </th>
+            <th>
+                RepairCases
+            </th>
+        </tr>
+
+        @foreach (var receptiondat in Model.data01)
+        {
+            <tr>
+                <td>
+                    @receptiondat.ReceptionDate.ToString("MM/dd/yyyy")
+            </td>
+            <td>
+                @receptiondat.RepairCaseCount
+            </td>
+        </tr>
+        }
+    </table>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="col-md-3">
+
+    <h2> Manufacturer Statistics</h2>
+    <table class="table-bordered">
+        <tr>
+            <th>
+                Manufacturer
+            </th>
+            <th>
+                Tools Count
+            </th>
+        </tr>
+
+        @foreach (var manufact in Model.data02)
+        {
+            <tr>
+                <td>
+                    @manufact.Manufacturer
+                </td>
+                <td>
+                    @manufact.ManufacturerCount
+                </td>
+            </tr>
+        }
+    </table>
+ </div>
+<div class="col-md-3">
+    <h2> Issues  Statistics</h2>
+    <table class="table-bordered">
+        <tr>
+            <th>
+                Issues
+            </th>
+            <th>
+                Issues Count
+            </th>
+        </tr>
+
+        @foreach (var issue in Model.data03)
+        {
+            <tr>
+                <td>
+                    @issue.IssueName
+                </td>
+                <td>
+                    @issue.Count
+                </td>
+            </tr>
+        }
+    </table>
+    </div>
+</div>
+</div>

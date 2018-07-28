@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="VTechContext-Web.config Connection String" description="VTechContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=AMILKAR\SQLSERVER;Initial Catalog=VTechClubDB;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Projects-2013\\VTechClubApp\\VTechClubApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='VTechContext']/@connectionString" />
+  </parameter>
+  <parameter name="VTechContext_DatabasePublish-Web.config Connection String" description="VTechContext_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="VTechContext_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Projects-2013\\VTechClubApp\\VTechClubApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='VTechContext_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>

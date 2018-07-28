@@ -1,0 +1,128 @@
+﻿@model VTechClubApp.Models.ToolTorepair
+
+@{
+    ViewBag.Title = "AddNewTool";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2 class="well">Add New Tool</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>Tool To repair</h4>*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.description , htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+  
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type , htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+             @Html.DropDownList("ListItem3", null, htmlAttributes: new { @class = "form-control" })
+                <div class="text-warning">
+                    @ViewBag.error1<br />
+                    </div>
+                </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Manufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Manufacturer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Manufacturer, "", new { @class = "text-danger" })*@
+                @Html.DropDownList("ListItem2", null, htmlAttributes: new { @class = "form-control" })
+
+                <div class="text-warning">
+                    @ViewBag.error3<br />
+                    </div>
+                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Issue, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Issue, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Issue, "", new { @class = "text-danger" })*@
+                @Html.DropDownList("ListItem1", null, htmlAttributes: new { @class = "form-control" })
+                <div class="text-warning">
+                    @ViewBag.error2<br />
+                    </div>
+                </div>
+        </div>
+        <div>
+            @Html.RadioButton("MoveType", "0")
+            @Html.Label("Finish")
+            @Html.RadioButton("MoveType", "1", true)
+            @Html.Label("Add new Tool")
+        </div>
+        @*<div class="text-warning">
+
+            @ViewBag.error1<br />
+            @ViewBag.error2<br />
+            @ViewBag.error3<br />
+        </div>*@
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-3">
+                    @*<input type="submit" value="Create" class="btn btn-default" />*@
+                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-3">
+                    <input type="submit" value="Create" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div class="container">
+    @*<h2>Modal Example</h2>*@
+    <!-- Trigger the modal with a button -->
+    @*<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Cancel</button>*@
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Cancel repair Case registration</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel this repair Case registration?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Cancel","RegisterStudent")'">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,142 @@
+﻿@model VTechClubApp.Models.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/layout.cshtml";
+    //The AjaxOptions determine the behavior of the AJAX call
+    //(e.g. what method on the server is called, what html element to update upon completion, etc.)
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading-area",
+        LoadingElementDuration = 1000,
+        Url = Url.Action("Submit"),
+        OnBegin = "HideForm",
+        OnFailure = "ShowFailure",
+        UpdateTargetId = "message-area"
+    };
+
+}
+
+<h2 class="well">Contact Us</h2>
+
+@*<div>
+    <div class="col-md-12">
+        <div>
+            @if (ViewBag.Message == null)
+            {
+                <div>
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="Name">Name</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Subject">Subject</label>
+                            <input asp-for="subject" class="form-control" />
+                            <span asp-validation-for="Subject"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Message">Message</label>
+                            <textarea rows="5" cols="15"
+                                      asp-for="Message" class="form-control"></textarea>
+                            <span asp-validation-for="Message"
+                                  class="text-muted"></span>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="btn btn-success">
+                                Send
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            }
+        </div>
+
+        <div>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div>@ViewBag.Message</div>
+
+
+                }
+            </div>
+        </div>
+    </div>
+
+</div>*@
+
+
+
+
+@using (Ajax.BeginForm(ajaxOptions))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>contact</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name , new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name , "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email , htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email  , new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email , "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.subject , htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.subject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message , htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, new {   @class = "form-control", @rows = "5"  })
+
+                @Html.ValidationMessageFor(model => model.Message , "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-primary" />
+            </div>
+        </div>
+
+
+        </div>
+}
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <div>@ViewBag.Message</div>
+
+
+    }
+</div>

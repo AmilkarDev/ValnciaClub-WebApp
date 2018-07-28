@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "AssignRoleToUser";
+}
+
+<h2>Assign Role To User</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Select your User Type", new { @class = "col-md-2 control-label"  })
+        <div class="col-md-10">
+            @Html.DropDownList("UserName")
+        </div>
+    </div>
+    <input type="submit" value="Create Role"/>
+    
+}
