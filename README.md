@@ -1,4 +1,4 @@
-# ValenciaClub-WebApp : As Valencia Tech Organization was in need to a web application for the management of its operations and meetings ,I developed this app during my 6 months internship in the Valencia College Orlando.
+# ValenciaClub-WebApp : Asp web application for the management of operations and meetings 
 -Registration and authetication in several roles (Admin ,Technician , Simple user)
 -This app still needs some features , but already the users could make an appointment precising the tools they need to be fixed .
 -After registration of their tools users will receive a recipient in pdf form with the  time of meeting and tools to bring
